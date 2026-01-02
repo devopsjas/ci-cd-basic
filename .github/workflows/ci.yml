@@ -1,20 +1,20 @@
-name: Basic CI Pipeline
+# name: Basic CI Pipeline
 
-on:
-  push:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
+#     steps:
+#     - name: Checkout Code
+#       uses: actions/checkout@v3
 
-    - name: Run Basic Test
-      run: |
-        echo "CI/CD Pipeline Running"
-        ls -l
-        cat index.html
+#     - name: Run Basic Test
+#       run: |
+#         echo "CI/CD Pipeline Running"
+#         ls -l
+#         cat index.html
