@@ -20,3 +20,7 @@ jobs:
     - name: Run Docker Container
       run: |
         docker run -d -p 8080:80 docker-cicd-app
+
+    - name: Verify Running Containers
+      run: |
+        docker ps
