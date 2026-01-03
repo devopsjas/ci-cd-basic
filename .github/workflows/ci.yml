@@ -24,3 +24,21 @@ jobs:
     - name: Verify Running Containers
       run: |
         docker ps
+
+    - name: Install ngrok
+      run: |
+        sudo apt update
+        sudo apt install unzip -y
+        curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
+          | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null
+        echo "deb https://ngrok-agent.s3.amazonaws.com jammy main" \
+          | sudo tee /etc/apt/sources.list.d/ngrok.list
+        sudo apt update
+        sudo apt install ngrok -y
+
+    - name: Start ngrok and show public URL
+      run: |
+        ngrok config add-authtoken ${{ secrets.NGROK_AUTH_TOKEN }}
+        ngrok http 8080 > ngrok.log &
+        sleep 10
+        curl http://127.0.0.1:4040/api/tunnels
