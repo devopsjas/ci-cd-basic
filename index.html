@@ -15,14 +15,14 @@ body{background:#f4f4f4;color:#333;}
 
 /* HEADER */
 header{
-  background:#b30000;color:white;padding:15px 30px;
+  background:#b30000;color:white;padding:15px 20px;
   display:flex;justify-content:space-between;align-items:center;
   position:sticky;top:0;z-index:100;
 }
-header h1{font-size:24px;}
-nav a{color:white;margin-left:18px;text-decoration:none;cursor:pointer;font-size:14px;transition:color 0.3s;}
+header h1{font-size:22px;}
+nav a{color:white;margin-left:15px;text-decoration:none;cursor:pointer;font-size:14px;transition:color 0.3s;}
 nav a:hover{color:#ffd700;text-decoration:underline;}
-#cart-count{position:absolute;top:-8px;right:-12px;background:yellow;color:black;font-size:12px;padding:2px 6px;border-radius:50%;display:none;}
+#cart-count{position:absolute;top:-6px;right:-12px;background:yellow;color:black;font-size:12px;padding:2px 6px;border-radius:50%;display:none;}
 
 /* HERO */
 .hero{
@@ -30,39 +30,41 @@ nav a:hover{color:#ffd700;text-decoration:underline;}
   color:white;padding:40px 20px;text-align:center;border-bottom-left-radius:50% 10%;
   border-bottom-right-radius:50% 10%;
 }
-.hero h2{font-size:36px;margin-bottom:10px;text-shadow:1px 1px 2px #000;}
-.hero p{font-size:18px;letter-spacing:1px;margin-bottom:15px;}
+.hero h2{font-size:32px;margin-bottom:10px;text-shadow:1px 1px 2px #000;}
+.hero p{font-size:16px;letter-spacing:1px;margin-bottom:15px;}
 #search-bar{padding:8px;width:60%;max-width:400px;border-radius:6px;border:none;font-size:14px;}
-
-/* SORTING */
 #sort-select{padding:8px;margin-left:10px;border-radius:6px;border:none;font-size:14px;}
 
 /* PRODUCTS */
 .products{
-  padding:40px 20px;display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  padding:30px 20px;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
   gap:25px;
 }
 .card{
-  background:white;border-radius:12px;padding:15px;box-shadow:0 8px 20px rgba(0,0,0,0.15);
-  transition:transform 0.3s,box-shadow 0.3s;position:relative;cursor:pointer;
+  background:white;border-radius:12px;padding:15px;box-shadow:0 6px 15px rgba(0,0,0,0.12);
+  transition: transform 0.3s, box-shadow 0.3s;position:relative;cursor:pointer;
 }
-.card:hover{transform:translateY(-6px);box-shadow:0 12px 25px rgba(0,0,0,0.2);}
-.card img{width:100%;border-radius:8px;object-fit:cover;height:180px;}
-.card h3{margin:10px 0 5px;font-size:18px;font-weight:600;}
-.price{color:#b30000;font-weight:bold;margin-bottom:12px;font-size:16px;}
-.card button{width:100%;padding:10px;border:none;background:#b30000;color:white;border-radius:6px;cursor:pointer;font-size:14px;transition:background 0.3s;}
+.card:hover{transform:translateY(-6px);box-shadow:0 10px 20px rgba(0,0,0,0.2);}
+.card img{width:100%;border-radius:8px;object-fit:cover;height:180px;transition:transform 0.3s;}
+.card:hover img{transform:scale(1.05);}
+.card h3{margin:10px 0 5px;font-size:16px;font-weight:600;}
+.price{color:#b30000;font-weight:bold;margin-bottom:12px;font-size:15px;}
+.card button{width:100%;padding:10px;border:none;background:#b30000;color:white;border-radius:6px;cursor:pointer;font-size:14px;transition:all 0.3s;}
 .card button:hover{background:#ff4d4d;}
-.cart-counter{position:absolute;top:12px;right:12px;background:#ffd700;color:#b30000;font-weight:bold;padding:4px 8px;border-radius:50%;font-size:12px;display:none;}
-.badge{position:absolute;top:12px;left:12px;background:#ffcc00;color:#b30000;padding:3px 6px;border-radius:4px;font-size:12px;font-weight:bold;}
+.cart-counter{position:absolute;top:10px;right:10px;background:#ffd700;color:#b30000;font-weight:bold;padding:3px 7px;border-radius:50%;font-size:12px;display:none;}
+.badge{position:absolute;top:10px;left:10px;background:#ffcc00;color:#b30000;padding:3px 6px;border-radius:4px;font-size:12px;font-weight:bold;}
+
+/* STAR RATING */
+.stars{color:#ffd700;font-size:14px;margin-bottom:5px;}
 
 /* FOOTER */
-footer{background:#111;color:#ccc;text-align:center;padding:15px;font-size:13px;}
+footer{background:#111;color:#ccc;text-align:center;padding:15px;font-size:12px;}
 
 /* MODALS */
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);justify-content:center;align-items:center;}
-.modal-box{background:white;padding:25px;border-radius:10px;width:300px;text-align:center;}
-.modal-box input{width:100%;padding:10px;margin:10px 0;border-radius:6px;border:1px solid #ccc;}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);justify-content:center;align-items:center;transition:opacity 0.3s;}
+.modal-box{background:white;padding:20px;border-radius:10px;width:300px;text-align:center;}
+.modal-box input{width:100%;padding:8px;margin:8px 0;border-radius:6px;border:1px solid #ccc;}
 .modal-box button{width:100%;padding:10px;background:#b30000;border:none;color:white;cursor:pointer;border-radius:6px;font-size:14px;margin-top:5px;}
 .modal-box button:hover{background:#ff4d4d;}
 
@@ -74,6 +76,14 @@ footer{background:#111;color:#ccc;text-align:center;padding:15px;font-size:13px;
 /* PRODUCT DETAIL MODAL */
 #productModal .modal-box img{margin:10px 0;border-radius:8px;width:100%;}
 #productModal p{margin:5px 0;}
+
+/* RESPONSIVE */
+@media(max-width:500px){
+  .hero h2{font-size:26px;}
+  .hero p{font-size:14px;}
+  #search-bar{width:100%;margin-bottom:10px;}
+  #sort-select{width:100%;margin:5px 0;}
+}
 </style>
 </head>
 <body>
@@ -101,7 +111,7 @@ footer{background:#111;color:#ccc;text-align:center;padding:15px;font-size:13px;
 </section>
 
 <section class="products" id="products-container">
-  <!-- Product cards will be rendered here by JS -->
+  <!-- Products rendered via JS -->
 </section>
 
 <footer>© 2026 Lalaji Electricals | CI/CD Demo</footer>
@@ -130,6 +140,7 @@ footer{background:#111;color:#ccc;text-align:center;padding:15px;font-size:13px;
 <div id="productModal" class="modal">
   <div class="modal-box">
     <h3 id="modal-name"></h3>
+    <div class="stars" id="modal-stars"></div>
     <img id="modal-img" src="" alt="">
     <p id="modal-price" style="font-weight:bold;color:#b30000;"></p>
     <p id="modal-desc"></p>
@@ -168,12 +179,12 @@ updateUI();
 
 // PRODUCTS
 const productsList=[
-  {id:1,name:"Ceiling Fan",price:2499,desc:"High quality ceiling fan with 3 blades.",img:"./images/ceiling-fan.png",badge:"10% OFF"},
-  {id:2,name:"LED Bulb 12W",price:199,desc:"Long-lasting 12W LED bulb.",img:"./images/led-bulb.png",badge:"New"},
-  {id:3,name:"Modular Switch",price:149,desc:"Durable modular switch.",img:"./images/modular-switch.png",badge:"Best Seller"},
-  {id:4,name:"Electrical Wire",price:1599,desc:"90m premium electrical wire.",img:"./images/electrical-wire.png",badge:"20% OFF"},
-  {id:5,name:"Room Heater",price:3299,desc:"Portable room heater.",img:"./images/room-heater.png",badge:"New"},
-  {id:6,name:"Electric Iron",price:1199,desc:"Steam electric iron.",img:"./images/electric-iron.png",badge:"10% OFF"}
+  {id:1,name:"Ceiling Fan",price:2499,desc:"High quality ceiling fan with 3 blades.",img:"./images/ceiling-fan.png",badge:"10% OFF",stars:4},
+  {id:2,name:"LED Bulb 12W",price:199,desc:"Long-lasting 12W LED bulb.",img:"./images/led-bulb.png",badge:"New",stars:5},
+  {id:3,name:"Modular Switch",price:149,desc:"Durable modular switch.",img:"./images/modular-switch.png",badge:"Best Seller",stars:4},
+  {id:4,name:"Electrical Wire",price:1599,desc:"90m premium electrical wire.",img:"./images/electrical-wire.png",badge:"20% OFF",stars:5},
+  {id:5,name:"Room Heater",price:3299,desc:"Portable room heater.",img:"./images/room-heater.png",badge:"New",stars:4},
+  {id:6,name:"Electric Iron",price:1199,desc:"Steam electric iron.",img:"./images/electric-iron.png",badge:"10% OFF",stars:5}
 ];
 let cart=[0,0,0,0,0,0];
 
@@ -189,20 +200,17 @@ function renderProducts(list){
       <span class="cart-counter" id="cart${p.id}">${cart[p.id-1]}</span>
       <img src="${p.img}" alt="${p.name}">
       <h3>${p.name}</h3>
+      <div class="stars">${'★'.repeat(p.stars)+'☆'.repeat(5-p.stars)}</div>
       <p class="price">₹${p.price}</p>
-      <button onclick="addToCart(${p.id});event.stopPropagation()">Add to Cart</button>
+      <button onclick="flyToCart(${p.id});event.stopPropagation()">Add to Cart</button>
     `;
     container.appendChild(div);
   });
 }
 renderProducts(productsList);
 
-function addToCart(id){
-  cart[id-1]++; document.getElementById("cart"+id).innerText=cart[id-1];
-  document.getElementById("cart"+id).style.display="inline-block";
-  updateCartUI();
-}
-
+// CART
+function addToCart(id){cart[id-1]++;document.getElementById("cart"+id).innerText=cart[id-1];document.getElementById("cart"+id).style.display="inline-block";updateCartUI();}
 function updateCartUI(){
   let total=0,count=0,itemsHTML="";
   productsList.forEach(p=>{
@@ -233,23 +241,16 @@ function showProduct(id){
   document.getElementById("modal-img").alt=p.name;
   document.getElementById("modal-price").innerText="₹"+p.price;
   document.getElementById("modal-desc").innerText=p.desc;
+  document.getElementById("modal-stars").innerText='★'.repeat(p.stars)+'☆'.repeat(5-p.stars);
   document.getElementById("productModal").style.display="flex";
 }
 function closeProductModal(){document.getElementById("productModal").style.display="none";}
 
 // SEARCH
-function searchProduct(query){
-  const filtered=productsList.filter(p=>p.name.toLowerCase().includes(query.toLowerCase()));
-  renderProducts(filtered);
-}
+function searchProduct(query){const filtered=productsList.filter(p=>p.name.toLowerCase().includes(query.toLowerCase()));renderProducts(filtered);}
 
 // SORT
-function sortProducts(order){
-  let sorted=[...productsList];
-  if(order==="low") sorted.sort((a,b)=>a.price-b.price);
-  else if(order==="high") sorted.sort((a,b)=>b.price-a.price);
-  renderProducts(sorted);
-}
+function sortProducts(order){let sorted=[...productsList];if(order==="low")sorted.sort((a,b)=>a.price-b.price);else if(order==="high")sorted.sort((a,b)=>b.price-a.price);renderProducts(sorted);}
 
 // CHECKOUT
 function checkout(){document.getElementById("checkoutModal").style.display="flex";}
@@ -260,7 +261,24 @@ function placeOrder(){
   const contact=document.getElementById("cust-contact").value;
   if(!name||!address||!contact)return alert("All fields required");
   alert(`Thank you ${name}! Your order has been placed successfully.`);
-  cart=[0,0,0,0,0,0]; updateCartUI(); closeCheckout(); toggleCart();
+  cart=[0,0,0,0,0,0];updateCartUI();closeCheckout();toggleCart();
+}
+
+// FLY TO CART ANIMATION
+function flyToCart(id){
+  const img=document.querySelector(`#products-container .card:nth-child(${id}) img`);
+  const flyImg=img.cloneNode(true);
+  const rect=img.getBoundingClientRect();
+  flyImg.style.position="fixed"; flyImg.style.left=rect.left+"px";
+  flyImg.style.top=rect.top+"px"; flyImg.style.width=rect.width+"px"; flyImg.style.transition="all 0.8s ease";
+  document.body.appendChild(flyImg);
+  const cartIcon=document.querySelector("nav a:last-child");
+  const cartRect=cartIcon.getBoundingClientRect();
+  setTimeout(()=>{
+    flyImg.style.left=cartRect.left+"px"; flyImg.style.top=cartRect.top+"px";
+    flyImg.style.width="0px"; flyImg.style.opacity="0";
+  },10);
+  setTimeout(()=>{flyImg.remove();addToCart(id);},800);
 }
 </script>
 </body>
