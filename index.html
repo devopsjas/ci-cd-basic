@@ -11,21 +11,40 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
-body{background:#f4f4f4;color:#333;position:relative;}
-header{background:#b30000;color:white;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;}
+body{background:#f4f4f4;color:#333;}
+
+/* HEADER */
+header{
+  background:#b30000;color:white;padding:15px 20px;
+  display:flex;justify-content:space-between;align-items:center;
+  position:sticky;top:0;z-index:100;
+}
 header h1{font-size:22px;}
 nav a{color:white;margin-left:15px;text-decoration:none;cursor:pointer;font-size:14px;transition:color 0.3s;}
 nav a:hover{color:#ffd700;text-decoration:underline;}
 #cart-count{position:absolute;top:-6px;right:-12px;background:yellow;color:black;font-size:12px;padding:2px 6px;border-radius:50%;display:none;}
 
-.hero{background:linear-gradient(to right,#ff4d4d,#0b00b3);color:white;padding:40px 20px;text-align:center;border-bottom-left-radius:50% 10%;border-bottom-right-radius:50% 10%;}
+/* HERO */
+.hero{
+  background:linear-gradient(to right,#ff4d4d,#0b00b3);
+  color:white;padding:40px 20px;text-align:center;border-bottom-left-radius:50% 10%;
+  border-bottom-right-radius:50% 10%;
+}
 .hero h2{font-size:32px;margin-bottom:10px;text-shadow:1px 1px 2px #000;}
 .hero p{font-size:16px;letter-spacing:1px;margin-bottom:15px;}
-#search-bar{padding:8px;width:60%;max-width:400px;border-radius:6px;border:none;font-size:14px;margin-bottom:10px;}
+#search-bar{padding:8px;width:60%;max-width:400px;border-radius:6px;border:none;font-size:14px;}
 #sort-select{padding:8px;margin-left:10px;border-radius:6px;border:none;font-size:14px;}
 
-.products{padding:30px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:25px;}
-.card{background:white;border-radius:12px;padding:15px;box-shadow:0 6px 15px rgba(0,0,0,0.12);transition:transform 0.3s,box-shadow 0.3s;position:relative;cursor:pointer;}
+/* PRODUCTS */
+.products{
+  padding:30px 20px;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:25px;
+}
+.card{
+  background:white;border-radius:12px;padding:15px;box-shadow:0 6px 15px rgba(0,0,0,0.12);
+  transition: transform 0.3s, box-shadow 0.3s;position:relative;cursor:pointer;
+}
 .card:hover{transform:translateY(-6px);box-shadow:0 10px 20px rgba(0,0,0,0.2);}
 .card img{width:100%;border-radius:8px;object-fit:cover;height:180px;transition:transform 0.3s;}
 .card:hover img{transform:scale(1.05);}
@@ -35,22 +54,12 @@ nav a:hover{color:#ffd700;text-decoration:underline;}
 .card button:hover{background:#ff4d4d;}
 .cart-counter{position:absolute;top:10px;right:10px;background:#ffd700;color:#b30000;font-weight:bold;padding:3px 7px;border-radius:50%;font-size:12px;display:none;}
 .badge{position:absolute;top:10px;left:10px;background:#ffcc00;color:#b30000;padding:3px 6px;border-radius:4px;font-size:12px;font-weight:bold;}
+
+/* STAR RATING */
 .stars{color:#ffd700;font-size:14px;margin-bottom:5px;}
 
-#back-to-top{
-  position:fixed;
-  bottom:25px;
-  right:25px;
-  background:#b30000;
-  color:white;
-  padding:10px 15px;
-  border-radius:50%;
-  font-size:18px;
-  cursor:pointer;
-  display:none;
-  z-index:200;
-}
-#back-to-top:hover{background:#ff4d4d;}
+/* FOOTER */
+footer{background:#111;color:#ccc;text-align:center;padding:15px;font-size:12px;}
 
 /* MODALS */
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);justify-content:center;align-items:center;transition:opacity 0.3s;}
@@ -67,8 +76,8 @@ nav a:hover{color:#ffd700;text-decoration:underline;}
 /* PRODUCT DETAIL MODAL */
 #productModal .modal-box img{margin:10px 0;border-radius:8px;width:100%;}
 #productModal p{margin:5px 0;}
-.review-section{margin-top:10px;text-align:left;}
-.review-section p{font-size:13px;margin-bottom:5px;}
+
+/* RESPONSIVE */
 @media(max-width:500px){
   .hero h2{font-size:26px;}
   .hero p{font-size:14px;}
@@ -101,7 +110,9 @@ nav a:hover{color:#ffd700;text-decoration:underline;}
   </select>
 </section>
 
-<section class="products" id="products-container"></section>
+<section class="products" id="products-container">
+  <!-- Products rendered via JS -->
+</section>
 
 <footer>© 2026 Lalaji Electricals | CI/CD Demo</footer>
 
@@ -133,31 +144,47 @@ nav a:hover{color:#ffd700;text-decoration:underline;}
     <img id="modal-img" src="" alt="">
     <p id="modal-price" style="font-weight:bold;color:#b30000;"></p>
     <p id="modal-desc"></p>
-    <div class="review-section" id="modal-reviews"></div>
-    <button onclick="addReview()">Add Review</button>
     <button onclick="closeProductModal()">Close</button>
   </div>
 </div>
 
-<!-- BACK TO TOP -->
-<div id="back-to-top" onclick="scrollToTop()">↑</div>
+<!-- CHECKOUT MODAL -->
+<div id="checkoutModal" class="modal">
+  <div class="modal-box">
+    <h3>Checkout</h3>
+    <input type="text" id="cust-name" placeholder="Name">
+    <input type="text" id="cust-address" placeholder="Address">
+    <input type="text" id="cust-contact" placeholder="Contact">
+    <button onclick="placeOrder()">Place Order</button>
+    <button onclick="closeCheckout()">Cancel</button>
+  </div>
+</div>
 
 <script>
 // LOGIN
 function openLogin(){document.getElementById("loginModal").style.display="flex";}
-function login(){const email=document.getElementById("email").value;if(!email)return alert("Email required");localStorage.setItem("userEmail",email);document.getElementById("loginModal").style.display="none";updateUI();}
+function login(){
+  const email=document.getElementById("email").value;
+  if(!email)return alert("Email required");
+  localStorage.setItem("userEmail",email);
+  document.getElementById("loginModal").style.display="none";
+  updateUI();
+}
 function logout(){localStorage.removeItem("userEmail");updateUI();}
-function updateUI(){const email=localStorage.getItem("userEmail");document.getElementById("welcome").innerText=email?"Welcome "+email:"Trusted Electrical Store Since 1998";}
+function updateUI(){
+  const email=localStorage.getItem("userEmail");
+  document.getElementById("welcome").innerText=email?"Welcome "+email:"Trusted Electrical Store Since 1998";
+}
 updateUI();
 
 // PRODUCTS
 const productsList=[
-  {id:1,name:"Ceiling Fan",price:2499,desc:"High quality ceiling fan with 3 blades.",img:"./images/ceiling-fan.png",badge:"10% OFF",stars:4,reviews:["Great fan!","Works perfectly."]},
-  {id:2,name:"LED Bulb 12W",price:199,desc:"Long-lasting 12W LED bulb.",img:"./images/led-bulb.png",badge:"New",stars:5,reviews:["Bright and efficient."]},
-  {id:3,name:"Modular Switch",price:149,desc:"Durable modular switch.",img:"./images/modular-switch.png",badge:"Best Seller",stars:4,reviews:["Very sturdy."]},
-  {id:4,name:"Electrical Wire",price:1599,desc:"90m premium electrical wire.",img:"./images/electrical-wire.png",badge:"20% OFF",stars:5,reviews:["High quality wire."]},
-  {id:5,name:"Room Heater",price:3299,desc:"Portable room heater.",img:"./images/room-heater.png",badge:"New",stars:4,reviews:["Heats the room quickly."]},
-  {id:6,name:"Electric Iron",price:1199,desc:"Steam electric iron.",img:"./images/electric-iron.png",badge:"10% OFF",stars:5,reviews:["Smooth and easy to use."]}
+  {id:1,name:"Ceiling Fan",price:2499,desc:"High quality ceiling fan with 3 blades.",img:"./images/ceiling-fan.png",badge:"10% OFF",stars:4},
+  {id:2,name:"LED Bulb 12W",price:199,desc:"Long-lasting 12W LED bulb.",img:"./images/led-bulb.png",badge:"New",stars:5},
+  {id:3,name:"Modular Switch",price:149,desc:"Durable modular switch.",img:"./images/modular-switch.png",badge:"Best Seller",stars:4},
+  {id:4,name:"Electrical Wire",price:1599,desc:"90m premium electrical wire.",img:"./images/electrical-wire.png",badge:"20% OFF",stars:5},
+  {id:5,name:"Room Heater",price:3299,desc:"Portable room heater.",img:"./images/room-heater.png",badge:"New",stars:4},
+  {id:6,name:"Electric Iron",price:1199,desc:"Steam electric iron.",img:"./images/electric-iron.png",badge:"10% OFF",stars:5}
 ];
 let cart=[0,0,0,0,0,0];
 
@@ -168,7 +195,15 @@ function renderProducts(list){
     const div=document.createElement("div");
     div.className="card";
     div.onclick=()=>showProduct(p.id);
-    div.innerHTML=`${p.badge?'<span class="badge">'+p.badge+'</span>':''}<span class="cart-counter" id="cart${p.id}">${cart[p.id-1]}</span><img src="${p.img}" alt="${p.name}"><h3>${p.name}</h3><div class="stars">${'★'.repeat(p.stars)+'☆'.repeat(5-p.stars)}</div><p class="price">₹${p.price}</p><button onclick="flyToCart(${p.id});event.stopPropagation()">Add to Cart</button>`;
+    div.innerHTML=`
+      ${p.badge?'<span class="badge">'+p.badge+'</span>':''}
+      <span class="cart-counter" id="cart${p.id}">${cart[p.id-1]}</span>
+      <img src="${p.img}" alt="${p.name}">
+      <h3>${p.name}</h3>
+      <div class="stars">${'★'.repeat(p.stars)+'☆'.repeat(5-p.stars)}</div>
+      <p class="price">₹${p.price}</p>
+      <button onclick="flyToCart(${p.id});event.stopPropagation()">Add to Cart</button>
+    `;
     container.appendChild(div);
   });
 }
@@ -176,7 +211,24 @@ renderProducts(productsList);
 
 // CART
 function addToCart(id){cart[id-1]++;document.getElementById("cart"+id).innerText=cart[id-1];document.getElementById("cart"+id).style.display="inline-block";updateCartUI();}
-function updateCartUI(){let total=0,count=0,itemsHTML="";productsList.forEach(p=>{let qty=cart[p.id-1];if(qty>0){itemsHTML+=`<p>${p.name} × ${qty} = ₹${p.price*qty}<button onclick="changeQty(${p.id},1)">+</button><button onclick="changeQty(${p.id},-1)">-</button><button onclick="removeItem(${p.id})">Remove</button></p>`;count+=qty;total+=p.price*qty;}});document.getElementById("cart-count").innerText=count;document.getElementById("cart-count").style.display=count?"inline-block":"none";document.getElementById("cart-items").innerHTML=itemsHTML||"<p>Cart is empty</p>";document.getElementById("cart-total").innerText=total;}
+function updateCartUI(){
+  let total=0,count=0,itemsHTML="";
+  productsList.forEach(p=>{
+    let qty=cart[p.id-1];
+    if(qty>0){
+      itemsHTML+=`<p>${p.name} × ${qty} = ₹${p.price*qty}
+        <button onclick="changeQty(${p.id},1)">+</button>
+        <button onclick="changeQty(${p.id},-1)">-</button>
+        <button onclick="removeItem(${p.id})">Remove</button>
+      </p>`;
+      count+=qty; total+=p.price*qty;
+    }
+  });
+  document.getElementById("cart-count").innerText=count;
+  document.getElementById("cart-count").style.display=count?"inline-block":"none";
+  document.getElementById("cart-items").innerHTML=itemsHTML||"<p>Cart is empty</p>";
+  document.getElementById("cart-total").innerText=total;
+}
 function changeQty(id,delta){cart[id-1]+=delta;if(cart[id-1]<0)cart[id-1]=0;document.getElementById("cart"+id).innerText=cart[id-1];document.getElementById("cart"+id).style.display=cart[id-1]?"inline-block":"none";updateCartUI();}
 function removeItem(id){cart[id-1]=0;document.getElementById("cart"+id).innerText=0;document.getElementById("cart"+id).style.display="none";updateCartUI();}
 function toggleCart(){const modal=document.getElementById("cartModal");modal.style.display=modal.style.display==="flex"?"none":"flex";}
@@ -190,41 +242,44 @@ function showProduct(id){
   document.getElementById("modal-price").innerText="₹"+p.price;
   document.getElementById("modal-desc").innerText=p.desc;
   document.getElementById("modal-stars").innerText='★'.repeat(p.stars)+'☆'.repeat(5-p.stars);
-  const reviewsContainer=document.getElementById("modal-reviews");
-  reviewsContainer.innerHTML=p.reviews.map(r=>"<p>"+r+"</p>").join('');
   document.getElementById("productModal").style.display="flex";
 }
 function closeProductModal(){document.getElementById("productModal").style.display="none";}
 
-// ADD REVIEW
-function addReview(){
-  const review=prompt("Enter your review:");
-  if(review){
-    const name=document.getElementById("modal-name").innerText;
-    const p=productsList.find(x=>x.name===name);
-    p.reviews.push(review);
-    const reviewsContainer=document.getElementById("modal-reviews");
-    reviewsContainer.innerHTML=p.reviews.map(r=>"<p>"+r+"</p>").join('');
-    alert("Review added!");
-  }
-}
-
-// SEARCH / SORT
+// SEARCH
 function searchProduct(query){const filtered=productsList.filter(p=>p.name.toLowerCase().includes(query.toLowerCase()));renderProducts(filtered);}
+
+// SORT
 function sortProducts(order){let sorted=[...productsList];if(order==="low")sorted.sort((a,b)=>a.price-b.price);else if(order==="high")sorted.sort((a,b)=>b.price-a.price);renderProducts(sorted);}
 
 // CHECKOUT
 function checkout(){document.getElementById("checkoutModal").style.display="flex";}
 function closeCheckout(){document.getElementById("checkoutModal").style.display="none";}
-function placeOrder(){const name=document.getElementById("cust-name").value;const address=document.getElementById("cust-address").value;const contact=document.getElementById("cust-contact").value;if(!name||!address||!contact)return alert("All fields required");alert(`Thank you ${name}! Your order has been placed successfully.`);cart=[0,0,0,0,0,0];updateCartUI();closeCheckout();toggleCart();}
+function placeOrder(){
+  const name=document.getElementById("cust-name").value;
+  const address=document.getElementById("cust-address").value;
+  const contact=document.getElementById("cust-contact").value;
+  if(!name||!address||!contact)return alert("All fields required");
+  alert(`Thank you ${name}! Your order has been placed successfully.`);
+  cart=[0,0,0,0,0,0];updateCartUI();closeCheckout();toggleCart();
+}
 
-// FLY TO CART
-function flyToCart(id){const img=document.querySelector(`#products-container .card:nth-child(${id}) img`);const flyImg=img.cloneNode(true);const rect=img.getBoundingClientRect();flyImg.style.position="fixed";flyImg.style.left=rect.left+"px";flyImg.style.top=rect.top+"px";flyImg.style.width=rect.width+"px";flyImg.style.transition="all 0.8s ease";document.body.appendChild(flyImg);const cartIcon=document.querySelector("nav a:last-child");const cartRect=cartIcon.getBoundingClientRect();setTimeout(()=>{flyImg.style.left=cartRect.left+"px";flyImg.style.top=cartRect.top+"px";flyImg.style.width="0px";flyImg.style.opacity="0";},10);setTimeout(()=>{flyImg.remove();addToCart(id);},800);}
-
-// BACK TO TOP
-window.onscroll=function(){document.getElementById("back-to-top").style.display=window.scrollY>300?"block":"none";}
-function scrollToTop(){window.scrollTo({top:0,behavior:"smooth"});}
+// FLY TO CART ANIMATION
+function flyToCart(id){
+  const img=document.querySelector(`#products-container .card:nth-child(${id}) img`);
+  const flyImg=img.cloneNode(true);
+  const rect=img.getBoundingClientRect();
+  flyImg.style.position="fixed"; flyImg.style.left=rect.left+"px";
+  flyImg.style.top=rect.top+"px"; flyImg.style.width=rect.width+"px"; flyImg.style.transition="all 0.8s ease";
+  document.body.appendChild(flyImg);
+  const cartIcon=document.querySelector("nav a:last-child");
+  const cartRect=cartIcon.getBoundingClientRect();
+  setTimeout(()=>{
+    flyImg.style.left=cartRect.left+"px"; flyImg.style.top=cartRect.top+"px";
+    flyImg.style.width="0px"; flyImg.style.opacity="0";
+  },10);
+  setTimeout(()=>{flyImg.remove();addToCart(id);},800);
+}
 </script>
-
 </body>
 </html>
