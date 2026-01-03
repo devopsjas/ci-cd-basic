@@ -38,3 +38,5 @@ jobs:
         ngrok http 8080 > ngrok.log &
         sleep 10
         curl http://127.0.0.1:4040/api/tunnels
+        echo "Keeping job alive for 10 minutes..."
+        sleep 600
