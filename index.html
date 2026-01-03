@@ -10,234 +10,72 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
-}
-
-body {
-  background: #f4f4f4;
-  color: #333;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body{background:#f4f4f4;color:#333;}
 
 /* HEADER */
-header {
-  background: #b30000;
-  color: white;
-  padding: 15px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+header{
+  background:#b30000;color:white;padding:15px 30px;
+  display:flex;justify-content:space-between;align-items:center;
+  position:sticky;top:0;z-index:100;
 }
-
-header h1 {
-  font-size: 24px;
-}
-
-nav a {
-  color: white;
-  margin-left: 18px;
-  text-decoration: none;
-  cursor: pointer;
-  font-size: 14px;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: #ffd700;
-  text-decoration: underline;
-}
-
-/* ADD: Cart icon badge */
-#cart-count {
-  position:absolute;
-  top:-8px;
-  right:-12px;
-  background:yellow;
-  color:black;
-  font-size:12px;
-  padding:2px 6px;
-  border-radius:50%;
-  display:none;
-}
+header h1{font-size:24px;}
+nav a{color:white;margin-left:18px;text-decoration:none;cursor:pointer;font-size:14px;transition:color 0.3s;}
+nav a:hover{color:#ffd700;text-decoration:underline;}
+#cart-count{position:absolute;top:-8px;right:-12px;background:yellow;color:black;font-size:12px;padding:2px 6px;border-radius:50%;display:none;}
 
 /* HERO */
-.hero {
-  background: linear-gradient(to right, #ff4d4d, #0b00b3);
-  color: white;
-  padding: 60px 20px;
-  text-align: center;
-  border-bottom-left-radius: 50% 10%;
-  border-bottom-right-radius: 50% 10%;
+.hero{
+  background:linear-gradient(to right,#ff4d4d,#0b00b3);
+  color:white;padding:40px 20px;text-align:center;border-bottom-left-radius:50% 10%;
+  border-bottom-right-radius:50% 10%;
 }
+.hero h2{font-size:36px;margin-bottom:10px;text-shadow:1px 1px 2px #000;}
+.hero p{font-size:18px;letter-spacing:1px;margin-bottom:15px;}
+#search-bar{padding:8px;width:60%;max-width:400px;border-radius:6px;border:none;font-size:14px;}
 
-.hero h2 {
-  font-size: 36px;
-  margin-bottom: 10px;
-  text-shadow: 1px 1px 2px #000;
-}
-
-.hero p {
-  font-size: 18px;
-  letter-spacing: 1px;
-}
+/* SORTING */
+#sort-select{padding:8px;margin-left:10px;border-radius:6px;border:none;font-size:14px;}
 
 /* PRODUCTS */
-.products {
-  padding: 40px 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
+.products{
+  padding:40px 20px;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
 }
-
-.card {
-  background: white;
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  transition: transform 0.3s, box-shadow 0.3s;
-  position: relative;
+.card{
+  background:white;border-radius:12px;padding:15px;box-shadow:0 8px 20px rgba(0,0,0,0.15);
+  transition:transform 0.3s,box-shadow 0.3s;position:relative;cursor:pointer;
 }
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
-}
-
-.card img {
-  width: 100%;
-  border-radius: 8px;
-  object-fit: cover;
-  height: 180px;
-}
-
-.card h3 {
-  margin: 10px 0 5px;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.price {
-  color: #b30000;
-  font-weight: bold;
-  margin-bottom: 12px;
-  font-size: 16px;
-}
-
-.card button {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  background: #b30000;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background 0.3s;
-}
-
-.card button:hover {
-  background: #ff4d4d;
-}
-
-/* CART COUNTER */
-.cart-counter {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: #ffd700;
-  color: #b30000;
-  font-weight: bold;
-  padding: 4px 8px;
-  border-radius: 50%;
-  font-size: 12px;
-  display: none;
-}
+.card:hover{transform:translateY(-6px);box-shadow:0 12px 25px rgba(0,0,0,0.2);}
+.card img{width:100%;border-radius:8px;object-fit:cover;height:180px;}
+.card h3{margin:10px 0 5px;font-size:18px;font-weight:600;}
+.price{color:#b30000;font-weight:bold;margin-bottom:12px;font-size:16px;}
+.card button{width:100%;padding:10px;border:none;background:#b30000;color:white;border-radius:6px;cursor:pointer;font-size:14px;transition:background 0.3s;}
+.card button:hover{background:#ff4d4d;}
+.cart-counter{position:absolute;top:12px;right:12px;background:#ffd700;color:#b30000;font-weight:bold;padding:4px 8px;border-radius:50%;font-size:12px;display:none;}
+.badge{position:absolute;top:12px;left:12px;background:#ffcc00;color:#b30000;padding:3px 6px;border-radius:4px;font-size:12px;font-weight:bold;}
 
 /* FOOTER */
-footer {
-  background: #111;
-  color: #ccc;
-  text-align: center;
-  padding: 15px;
-  font-size: 13px;
-}
+footer{background:#111;color:#ccc;text-align:center;padding:15px;font-size:13px;}
 
-/* LOGIN MODAL */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-box {
-  background: white;
-  padding: 25px;
-  border-radius: 10px;
-  width: 300px;
-  text-align: center;
-}
-
-.modal-box input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-.modal-box button {
-  width: 100%;
-  padding: 10px;
-  background: #b30000;
-  border: none;
-  color: white;
-  cursor: pointer;
-  border-radius: 6px;
-  font-size: 14px;
-}
+/* MODALS */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);justify-content:center;align-items:center;}
+.modal-box{background:white;padding:25px;border-radius:10px;width:300px;text-align:center;}
+.modal-box input{width:100%;padding:10px;margin:10px 0;border-radius:6px;border:1px solid #ccc;}
+.modal-box button{width:100%;padding:10px;background:#b30000;border:none;color:white;cursor:pointer;border-radius:6px;font-size:14px;margin-top:5px;}
+.modal-box button:hover{background:#ff4d4d;}
 
 /* CART MODAL */
-#cartModal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-}
+#cartModal .modal-box{width:320px;text-align:left;}
+#cartModal button{margin:2px 4px 2px 0;padding:3px 6px;font-size:12px;border-radius:4px;border:none;cursor:pointer;background:#b30000;color:white;}
+#cartModal button:hover{background:#ff4d4d;}
 
-#cartModal .modal-box {
-  width: 320px;
-  text-align: left;
-}
-
-#cartModal button {
-  margin: 2px 4px 2px 0;
-  padding: 3px 6px;
-  font-size: 12px;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  background: #b30000;
-  color: white;
-}
-
-#cartModal button:hover {
-  background: #ff4d4d;
-}
-
+/* PRODUCT DETAIL MODAL */
+#productModal .modal-box img{margin:10px 0;border-radius:8px;width:100%;}
+#productModal p{margin:5px 0;}
 </style>
 </head>
-
 <body>
 
 <header>
@@ -247,75 +85,28 @@ footer {
     <a>Products</a>
     <a onclick="openLogin()">Login</a>
     <a onclick="logout()">Logout</a>
-
-    <!-- ADD: Cart Icon -->
-    <a onclick="toggleCart()" style="position:relative; cursor:pointer;">
-      🛒 Cart
-      <span id="cart-count">0</span>
-    </a>
+    <a onclick="toggleCart()" style="position:relative; cursor:pointer;">🛒 Cart <span id="cart-count">0</span></a>
   </nav>
 </header>
 
 <section class="hero">
   <h2 id="welcome">Trusted Electrical Store Since 1998</h2>
   <p>Fans • Lights • Wires • Switches • Appliances</p>
+  <input type="text" id="search-bar" placeholder="Search products..." oninput="searchProduct(this.value)">
+  <select id="sort-select" onchange="sortProducts(this.value)">
+    <option value="">Sort by Price</option>
+    <option value="low">Low → High</option>
+    <option value="high">High → Low</option>
+  </select>
 </section>
 
-<section class="products">
-  <div class="card">
-    <span class="cart-counter" id="cart1">0</span>
-    <img src="./images/ceiling-fan.png" alt="Ceiling Fan">
-    <h3>Ceiling Fan</h3>
-    <p class="price">₹2,499</p>
-    <button onclick="addToCart(1)">Add to Cart</button>
-  </div>
-
-  <div class="card">
-    <span class="cart-counter" id="cart2">0</span>
-    <img src="./images/led-bulb.png" alt="LED Bulb">
-    <h3>LED Bulb 12W</h3>
-    <p class="price">₹199</p>
-    <button onclick="addToCart(2)">Add to Cart</button>
-  </div>
-
-  <div class="card">
-    <span class="cart-counter" id="cart3">0</span>
-    <img src="./images/modular-switch.png" alt="Modular Switch">
-    <h3>Modular Switch</h3>
-    <p class="price">₹149</p>
-    <button onclick="addToCart(3)">Add to Cart</button>
-  </div>
-
-  <div class="card">
-    <span class="cart-counter" id="cart4">0</span>
-    <img src="./images/electrical-wire.png" alt="Electrical Wire">
-    <h3>Electrical Wire (90m)</h3>
-    <p class="price">₹1,599</p>
-    <button onclick="addToCart(4)">Add to Cart</button>
-  </div>
-
-  <div class="card">
-    <span class="cart-counter" id="cart5">0</span>
-    <img src="./images/room-heater.png" alt="Room Heater">
-    <h3>Room Heater</h3>
-    <p class="price">₹3,299</p>
-    <button onclick="addToCart(5)">Add to Cart</button>
-  </div>
-
-  <div class="card">
-    <span class="cart-counter" id="cart6">0</span>
-    <img src="./images/electric-iron.png" alt="Electric Iron">
-    <h3>Electric Iron</h3>
-    <p class="price">₹1,199</p>
-    <button onclick="addToCart(6)">Add to Cart</button>
-  </div>
+<section class="products" id="products-container">
+  <!-- Product cards will be rendered here by JS -->
 </section>
 
-<footer>
-  © 2026 Lalaji Electricals | CI/CD Demo (Docker + Cloudflared)
-</footer>
+<footer>© 2026 Lalaji Electricals | CI/CD Demo</footer>
 
-<!-- LOGIN -->
+<!-- LOGIN MODAL -->
 <div class="modal" id="loginModal">
   <div class="modal-box">
     <h3>Customer Login</h3>
@@ -324,113 +115,153 @@ footer {
   </div>
 </div>
 
-<!-- ADD: Cart Modal -->
+<!-- CART MODAL -->
 <div id="cartModal" class="modal">
   <div class="modal-box">
     <h3>Your Cart</h3>
     <div id="cart-items"></div>
-    <p style="margin-top:10px;font-weight:bold;">
-      Total: ₹<span id="cart-total">0</span>
-    </p>
+    <p style="margin-top:10px;font-weight:bold;">Total: ₹<span id="cart-total">0</span></p>
+    <button onclick="checkout()">Proceed to Checkout</button>
     <button onclick="toggleCart()">Close</button>
   </div>
 </div>
 
+<!-- PRODUCT DETAIL MODAL -->
+<div id="productModal" class="modal">
+  <div class="modal-box">
+    <h3 id="modal-name"></h3>
+    <img id="modal-img" src="" alt="">
+    <p id="modal-price" style="font-weight:bold;color:#b30000;"></p>
+    <p id="modal-desc"></p>
+    <button onclick="closeProductModal()">Close</button>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div id="checkoutModal" class="modal">
+  <div class="modal-box">
+    <h3>Checkout</h3>
+    <input type="text" id="cust-name" placeholder="Name">
+    <input type="text" id="cust-address" placeholder="Address">
+    <input type="text" id="cust-contact" placeholder="Contact">
+    <button onclick="placeOrder()">Place Order</button>
+    <button onclick="closeCheckout()">Cancel</button>
+  </div>
+</div>
+
 <script>
-// LOGIN / LOGOUT
-function openLogin() {
-  document.getElementById("loginModal").style.display = "flex";
-}
-function login() {
-  const email = document.getElementById("email").value;
-  if (!email) return alert("Email required");
-  localStorage.setItem("userEmail", email);
-  document.getElementById("loginModal").style.display = "none";
+// LOGIN
+function openLogin(){document.getElementById("loginModal").style.display="flex";}
+function login(){
+  const email=document.getElementById("email").value;
+  if(!email)return alert("Email required");
+  localStorage.setItem("userEmail",email);
+  document.getElementById("loginModal").style.display="none";
   updateUI();
 }
-function logout() {
-  localStorage.removeItem("userEmail");
-  updateUI();
-}
-function updateUI() {
-  const email = localStorage.getItem("userEmail");
-  const welcome = document.getElementById("welcome");
-  if (email) welcome.innerText = "Welcome to Lalaji Electricals, " + email;
-  else welcome.innerText = "Trusted Electrical Store Since 1998";
+function logout(){localStorage.removeItem("userEmail");updateUI();}
+function updateUI(){
+  const email=localStorage.getItem("userEmail");
+  document.getElementById("welcome").innerText=email?"Welcome "+email:"Trusted Electrical Store Since 1998";
 }
 updateUI();
 
-// CART / ADD TO CART
-let cart = [0,0,0,0,0,0]; // six items
+// PRODUCTS
+const productsList=[
+  {id:1,name:"Ceiling Fan",price:2499,desc:"High quality ceiling fan with 3 blades.",img:"./images/ceiling-fan.png",badge:"10% OFF"},
+  {id:2,name:"LED Bulb 12W",price:199,desc:"Long-lasting 12W LED bulb.",img:"./images/led-bulb.png",badge:"New"},
+  {id:3,name:"Modular Switch",price:149,desc:"Durable modular switch.",img:"./images/modular-switch.png",badge:"Best Seller"},
+  {id:4,name:"Electrical Wire",price:1599,desc:"90m premium electrical wire.",img:"./images/electrical-wire.png",badge:"20% OFF"},
+  {id:5,name:"Room Heater",price:3299,desc:"Portable room heater.",img:"./images/room-heater.png",badge:"New"},
+  {id:6,name:"Electric Iron",price:1199,desc:"Steam electric iron.",img:"./images/electric-iron.png",badge:"10% OFF"}
+];
+let cart=[0,0,0,0,0,0];
 
-function addToCart(id) {
-  cart[id-1]++;
-  const counter = document.getElementById("cart"+id);
-  counter.innerText = cart[id-1];
-  counter.style.display = "inline-block";
+function renderProducts(list){
+  const container=document.getElementById("products-container");
+  container.innerHTML="";
+  list.forEach(p=>{
+    const div=document.createElement("div");
+    div.className="card";
+    div.onclick=()=>showProduct(p.id);
+    div.innerHTML=`
+      ${p.badge?'<span class="badge">'+p.badge+'</span>':''}
+      <span class="cart-counter" id="cart${p.id}">${cart[p.id-1]}</span>
+      <img src="${p.img}" alt="${p.name}">
+      <h3>${p.name}</h3>
+      <p class="price">₹${p.price}</p>
+      <button onclick="addToCart(${p.id});event.stopPropagation()">Add to Cart</button>
+    `;
+    container.appendChild(div);
+  });
+}
+renderProducts(productsList);
+
+function addToCart(id){
+  cart[id-1]++; document.getElementById("cart"+id).innerText=cart[id-1];
+  document.getElementById("cart"+id).style.display="inline-block";
   updateCartUI();
 }
 
-// PRODUCT DETAILS
-const products = {
-  1: { name: "Ceiling Fan", price: 2499 },
-  2: { name: "LED Bulb 12W", price: 199 },
-  3: { name: "Modular Switch", price: 149 },
-  4: { name: "Electrical Wire", price: 1599 },
-  5: { name: "Room Heater", price: 3299 },
-  6: { name: "Electric Iron", price: 1199 }
-};
-
-// UPDATE CART UI
-function updateCartUI() {
-  let count = 0;
-  let total = 0;
-  let itemsHTML = "";
-  for(let i=1; i<=6; i++){
-    let qty = cart[i-1];
+function updateCartUI(){
+  let total=0,count=0,itemsHTML="";
+  productsList.forEach(p=>{
+    let qty=cart[p.id-1];
     if(qty>0){
-      itemsHTML += `<p>${products[i].name} × ${qty} = ₹${products[i].price*qty}
-        <button onclick="changeQty(${i},1)">+</button>
-        <button onclick="changeQty(${i},-1)">-</button>
-        <button onclick="removeItem(${i})">Remove</button>
+      itemsHTML+=`<p>${p.name} × ${qty} = ₹${p.price*qty}
+        <button onclick="changeQty(${p.id},1)">+</button>
+        <button onclick="changeQty(${p.id},-1)">-</button>
+        <button onclick="removeItem(${p.id})">Remove</button>
       </p>`;
-      count += qty;
-      total += products[i].price*qty;
+      count+=qty; total+=p.price*qty;
     }
-  }
-  const cartBadge = document.getElementById("cart-count");
-  cartBadge.innerText = count;
-  cartBadge.style.display = count ? "inline-block" : "none";
+  });
+  document.getElementById("cart-count").innerText=count;
+  document.getElementById("cart-count").style.display=count?"inline-block":"none";
+  document.getElementById("cart-items").innerHTML=itemsHTML||"<p>Cart is empty</p>";
+  document.getElementById("cart-total").innerText=total;
+}
+function changeQty(id,delta){cart[id-1]+=delta;if(cart[id-1]<0)cart[id-1]=0;document.getElementById("cart"+id).innerText=cart[id-1];document.getElementById("cart"+id).style.display=cart[id-1]?"inline-block":"none";updateCartUI();}
+function removeItem(id){cart[id-1]=0;document.getElementById("cart"+id).innerText=0;document.getElementById("cart"+id).style.display="none";updateCartUI();}
+function toggleCart(){const modal=document.getElementById("cartModal");modal.style.display=modal.style.display==="flex"?"none":"flex";}
 
-  document.getElementById("cart-items").innerHTML = itemsHTML || "<p>Cart is empty</p>";
-  document.getElementById("cart-total").innerText = total;
+// PRODUCT MODAL
+function showProduct(id){
+  const p=productsList.find(x=>x.id===id);
+  document.getElementById("modal-name").innerText=p.name;
+  document.getElementById("modal-img").src=p.img;
+  document.getElementById("modal-img").alt=p.name;
+  document.getElementById("modal-price").innerText="₹"+p.price;
+  document.getElementById("modal-desc").innerText=p.desc;
+  document.getElementById("productModal").style.display="flex";
+}
+function closeProductModal(){document.getElementById("productModal").style.display="none";}
+
+// SEARCH
+function searchProduct(query){
+  const filtered=productsList.filter(p=>p.name.toLowerCase().includes(query.toLowerCase()));
+  renderProducts(filtered);
 }
 
-// CHANGE QUANTITY
-function changeQty(id, delta){
-  cart[id-1] += delta;
-  if(cart[id-1]<0) cart[id-1]=0;
-  const counter = document.getElementById("cart"+id);
-  counter.innerText = cart[id-1];
-  counter.style.display = cart[id-1] ? "inline-block" : "none";
-  updateCartUI();
+// SORT
+function sortProducts(order){
+  let sorted=[...productsList];
+  if(order==="low") sorted.sort((a,b)=>a.price-b.price);
+  else if(order==="high") sorted.sort((a,b)=>b.price-a.price);
+  renderProducts(sorted);
 }
 
-// REMOVE ITEM
-function removeItem(id){
-  cart[id-1]=0;
-  const counter = document.getElementById("cart"+id);
-  counter.innerText = 0;
-  counter.style.display = "none";
-  updateCartUI();
-}
-
-// TOGGLE CART MODAL
-function toggleCart(){
-  const modal = document.getElementById("cartModal");
-  modal.style.display = modal.style.display === "flex" ? "none" : "flex";
+// CHECKOUT
+function checkout(){document.getElementById("checkoutModal").style.display="flex";}
+function closeCheckout(){document.getElementById("checkoutModal").style.display="none";}
+function placeOrder(){
+  const name=document.getElementById("cust-name").value;
+  const address=document.getElementById("cust-address").value;
+  const contact=document.getElementById("cust-contact").value;
+  if(!name||!address||!contact)return alert("All fields required");
+  alert(`Thank you ${name}! Your order has been placed successfully.`);
+  cart=[0,0,0,0,0,0]; updateCartUI(); closeCheckout(); toggleCart();
 }
 </script>
-
 </body>
 </html>
