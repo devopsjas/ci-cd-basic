@@ -14,11 +14,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
 }
 
 body {
   background: #f4f4f4;
+  color: #333;
 }
 
 /* HEADER */
@@ -29,6 +30,9 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 header h1 {
@@ -41,24 +45,37 @@ nav a {
   text-decoration: none;
   cursor: pointer;
   font-size: 14px;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #ffd700;
 }
 
 /* HERO */
 .hero {
   background: linear-gradient(to right, #ff4d4d, #b30000);
   color: white;
-  padding: 50px 20px;
+  padding: 60px 20px;
   text-align: center;
+  border-bottom-left-radius: 50% 10%;
+  border-bottom-right-radius: 50% 10%;
 }
 
 .hero h2 {
-  font-size: 34px;
+  font-size: 36px;
   margin-bottom: 10px;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.hero p {
+  font-size: 18px;
+  letter-spacing: 1px;
 }
 
 /* PRODUCTS */
 .products {
-  padding: 40px;
+  padding: 40px 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 25px;
@@ -66,39 +83,66 @@ nav a {
 
 .card {
   background: white;
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 15px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
 }
 
 .card:hover {
   transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
 }
 
 .card img {
   width: 100%;
-  border-radius: 5px;
+  border-radius: 8px;
+  object-fit: cover;
+  height: 180px;
 }
 
 .card h3 {
   margin: 10px 0 5px;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .price {
   color: #b30000;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  font-size: 16px;
 }
 
 .card button {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   border: none;
   background: #b30000;
   color: white;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.card button:hover {
+  background: #ff4d4d;
+}
+
+/* CART COUNTER */
+.cart-counter {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #ffd700;
+  color: #b30000;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 50%;
+  font-size: 12px;
+  display: none;
 }
 
 /* FOOTER */
@@ -123,24 +167,28 @@ footer {
 .modal-box {
   background: white;
   padding: 25px;
-  border-radius: 8px;
-  width: 280px;
+  border-radius: 10px;
+  width: 300px;
   text-align: center;
 }
 
 .modal-box input {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
 .modal-box button {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   background: #b30000;
   border: none;
   color: white;
   cursor: pointer;
+  border-radius: 6px;
+  font-size: 14px;
 }
 </style>
 </head>
@@ -164,45 +212,51 @@ footer {
 
 <section class="products">
   <div class="card">
-    <img src="https://picsum.photos/300/200?fan">
+    <span class="cart-counter" id="cart1">0</span>
+    <img src="https://images.unsplash.com/photo-1606813906548-7df3a062c7d8?auto=format&fit=crop&w=400&q=80" alt="Ceiling Fan">
     <h3>Ceiling Fan</h3>
     <p class="price">₹2,499</p>
-    <button>Add to Cart</button>
+    <button onclick="addToCart(1)">Add to Cart</button>
   </div>
 
   <div class="card">
-    <img src="https://picsum.photos/300/200?led">
+    <span class="cart-counter" id="cart2">0</span>
+    <img src="https://images.unsplash.com/photo-1596464716121-5f847c5477c8?auto=format&fit=crop&w=400&q=80" alt="LED Bulb">
     <h3>LED Bulb 12W</h3>
     <p class="price">₹199</p>
-    <button>Add to Cart</button>
+    <button onclick="addToCart(2)">Add to Cart</button>
   </div>
 
   <div class="card">
-    <img src="https://picsum.photos/300/200?switch">
+    <span class="cart-counter" id="cart3">0</span>
+    <img src="https://images.unsplash.com/photo-1604014232173-0f12922870bc?auto=format&fit=crop&w=400&q=80" alt="Modular Switch">
     <h3>Modular Switch</h3>
     <p class="price">₹149</p>
-    <button>Add to Cart</button>
+    <button onclick="addToCart(3)">Add to Cart</button>
   </div>
 
   <div class="card">
-    <img src="https://picsum.photos/300/200?wire">
+    <span class="cart-counter" id="cart4">0</span>
+    <img src="https://images.unsplash.com/photo-1611078488081-4fbd63c9b143?auto=format&fit=crop&w=400&q=80" alt="Electrical Wire">
     <h3>Electrical Wire (90m)</h3>
     <p class="price">₹1,599</p>
-    <button>Add to Cart</button>
+    <button onclick="addToCart(4)">Add to Cart</button>
   </div>
 
   <div class="card">
-    <img src="https://picsum.photos/300/200?heater">
+    <span class="cart-counter" id="cart5">0</span>
+    <img src="https://images.unsplash.com/photo-1616627565001-c97b394f7963?auto=format&fit=crop&w=400&q=80" alt="Room Heater">
     <h3>Room Heater</h3>
     <p class="price">₹3,299</p>
-    <button>Add to Cart</button>
+    <button onclick="addToCart(5)">Add to Cart</button>
   </div>
 
   <div class="card">
-    <img src="https://picsum.photos/300/200?iron">
+    <span class="cart-counter" id="cart6">0</span>
+    <img src="https://images.unsplash.com/photo-1602526210133-d1b45f6ee128?auto=format&fit=crop&w=400&q=80" alt="Electric Iron">
     <h3>Electric Iron</h3>
     <p class="price">₹1,199</p>
-    <button>Add to Cart</button>
+    <button onclick="addToCart(6)">Add to Cart</button>
   </div>
 </section>
 
@@ -248,6 +302,17 @@ function updateUI() {
 }
 
 updateUI();
+
+// ADD TO CART
+let cart = [0,0,0,0,0,0]; // six items
+
+function addToCart(id) {
+  cart[id-1]++;
+  const counter = document.getElementById("cart"+id);
+  counter.innerText = cart[id-1];
+  counter.style.display = "inline-block";
+  alert("Added to cart!");
+}
 </script>
 
 </body>
