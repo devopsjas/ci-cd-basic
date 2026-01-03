@@ -52,6 +52,19 @@ nav a:hover {
   color: #ffd700;
 }
 
+/* ADD: Cart icon styles */
+#cart-count {
+  position:absolute;
+  top:-8px;
+  right:-12px;
+  background:yellow;
+  color:black;
+  font-size:12px;
+  padding:2px 6px;
+  border-radius:50%;
+  display:none;
+}
+
 /* HERO */
 .hero {
   background: linear-gradient(to right, #ff4d4d, #0b00b3);
@@ -190,6 +203,21 @@ footer {
   border-radius: 6px;
   font-size: 14px;
 }
+
+/* ADD: Cart Modal */
+#cartModal {
+  display: none;
+  position: fixed;
+  inset:0;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+#cartModal .modal-box {
+  width: 300px;
+  text-align: left;
+}
 </style>
 </head>
 
@@ -202,6 +230,12 @@ footer {
     <a>Products</a>
     <a onclick="openLogin()">Login</a>
     <a onclick="logout()">Logout</a>
+
+    <!-- ADD: Cart Icon -->
+    <a onclick="toggleCart()" style="position:relative; cursor:pointer;">
+      🛒 Cart
+      <span id="cart-count">0</span>
+    </a>
   </nav>
 </header>
 
@@ -273,6 +307,18 @@ footer {
   </div>
 </div>
 
+<!-- ADD: Cart Modal -->
+<div id="cartModal" class="modal">
+  <div class="modal-box">
+    <h3>Your Cart</h3>
+    <div id="cart-items"></div>
+    <p style="margin-top:10px;font-weight:bold;">
+      Total: ₹<span id="cart-total">0</span>
+    </p>
+    <button onclick="toggleCart()">Close</button>
+  </div>
+</div>
+
 <script>
 function openLogin() {
   document.getElementById("loginModal").style.display = "flex";
@@ -303,7 +349,7 @@ function updateUI() {
 
 updateUI();
 
-// ADD TO CART
+// EXISTING Add to Cart
 let cart = [0,0,0,0,0,0]; // six items
 
 function addToCart(id) {
@@ -311,8 +357,55 @@ function addToCart(id) {
   const counter = document.getElementById("cart"+id);
   counter.innerText = cart[id-1];
   counter.style.display = "inline-block";
-  alert("Added to cart!");
+
+  // ADD: Update new Cart icon & modal
+  updateCartUI();
 }
+
+// ADD: New Cart JS Start
+const products = {
+  1: { name: "Ceiling Fan", price: 2499 },
+  2: { name: "LED Bulb 12W", price: 199 },
+  3: { name: "Modular Switch", price: 149 },
+  4: { name: "Electrical Wire", price: 1599 },
+  5: { name: "Room Heater", price: 3299 },
+  6: { name: "Electric Iron", price: 1199 }
+};
+
+let cartNew = {}; // for new cart logic
+
+function updateCartUI() {
+  let count = 0;
+  let total = 0;
+  let itemsHTML = "";
+
+  // combine old cart array + new cart object
+  for(let i=1; i<=6; i++){
+    let qty = cart[i-1];
+    if(qty>0){
+      itemsHTML += `<p>${products[i].name} × ${qty} = ₹${products[i].price*qty}</p>`;
+      count += qty;
+      total += products[i].price*qty;
+    }
+  }
+
+  const cartBadge = document.getElementById("cart-count");
+  cartBadge.innerText = count;
+  cartBadge.style.display = count ? "inline-block" : "none";
+
+  const cartItemsDiv = document.getElementById("cart-items");
+  cartItemsDiv.innerHTML = itemsHTML || "<p>Cart is empty</p>";
+
+  const cartTotal = document.getElementById("cart-total");
+  cartTotal.innerText = total;
+}
+
+function toggleCart() {
+  const modal = document.getElementById("cartModal");
+  modal.style.display = modal.style.display === "flex" ? "none" : "flex";
+}
+// ADD: New Cart JS End
+
 </script>
 
 </body>
